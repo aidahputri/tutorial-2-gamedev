@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwkonxbdh6afu"]
+[gd_scene load_steps=8 format=3 uid="uid://cwkonxbdh6afu"]
 
 [ext_resource type="PackedScene" uid="uid://dt21o5yireisx" path="res://scenes/GreenShip.tscn" id="1_8isow"]
 [ext_resource type="Script" path="res://scenes/PlatformWhite.gd" id="2_2qhx3"]
 [ext_resource type="PackedScene" uid="uid://btgbauu88avyt" path="res://scenes/SnowPlatform.tscn" id="2_oo1p4"]
 [ext_resource type="Script" path="res://scenes/ObjectiveArea.gd" id="3_11dr5"]
+[ext_resource type="Script" path="res://scenes/DeathArea.gd" id="5_tj4wt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w14b7"]
 size = Vector2(169.375, 93.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agnnt"]
+size = Vector2(1152, 29)
 
 [node name="MainLevel2" type="Node"]
 
@@ -31,4 +35,12 @@ script = ExtResource("3_11dr5")
 position = Vector2(1065.69, 47.25)
 shape = SubResource("RectangleShape2D_w14b7")
 
+[node name="DeathArea" type="Area2D" parent="."]
+script = ExtResource("5_tj4wt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(576, 633.5)
+shape = SubResource("RectangleShape2D_agnnt")
+
 [connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_ObjectiveArea_body_entered"]
+[connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_DeathArea_body_entered"]
