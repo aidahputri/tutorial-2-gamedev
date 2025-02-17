@@ -12,7 +12,8 @@ size = Vector2(169.375, 93.5)
 
 [node name="GreenShip" parent="." instance=ExtResource("1_8isow")]
 position = Vector2(70, 392)
-script = null
+gravity_scale = 5.724
+lock_rotation = true
 
 [node name="PlatformWhite" type="Node2D" parent="."]
 script = ExtResource("2_2qhx3")
@@ -29,6 +30,5 @@ script = ExtResource("3_11dr5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveArea"]
 position = Vector2(1065.69, 47.25)
 shape = SubResource("RectangleShape2D_w14b7")
-disabled = true
 
 [connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_ObjectiveArea_body_entered"]

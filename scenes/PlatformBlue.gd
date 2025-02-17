@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var speed = 500.0
+#@export var speed = 500.0
+const PLATFORM_SPEED = 300 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,14 +9,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("move_up"):
-		move_local_y(-speed * delta, false)
-	
-	if Input.is_action_pressed("move_down"):
-		move_local_y(speed * delta, false)
-	
-	if Input.is_action_pressed("move_right"):
-		move_local_x(speed * delta, false)
-		
+	var direction_x = 0
+	var direction_y = 0
+
 	if Input.is_action_pressed("move_left"):
-		move_local_x(-speed * delta, false)
+		direction_x = -1
+	if Input.is_action_pressed("move_right"):
+		direction_x = 1
+	if Input.is_action_pressed("move_up"):
+		direction_y = -1
+	if Input.is_action_pressed("move_down"):
+		direction_y = 1
+
+	position.x += direction_x * PLATFORM_SPEED * delta
+	position.y += direction_y * PLATFORM_SPEED * delta
