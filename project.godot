@@ -15,6 +15,10 @@ run/main_scene="res://scenes/MainLevel.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://assets/icon.png"
 
+[global_group]
+
+VictoryCard=""
+
 [input]
 
 move_up={

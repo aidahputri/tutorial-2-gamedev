@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwkonxbdh6afu"]
+[gd_scene load_steps=9 format=3 uid="uid://cwkonxbdh6afu"]
 
 [ext_resource type="PackedScene" uid="uid://dt21o5yireisx" path="res://scenes/GreenShip.tscn" id="1_8isow"]
 [ext_resource type="Script" path="res://scenes/PlatformWhite.gd" id="2_2qhx3"]
@@ -11,6 +11,8 @@ size = Vector2(169.375, 93.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agnnt"]
 size = Vector2(1152, 29)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm0ja"]
 
 [node name="MainLevel2" type="Node"]
 
@@ -42,5 +44,42 @@ script = ExtResource("5_tj4wt")
 position = Vector2(576, 633.5)
 shape = SubResource("RectangleShape2D_agnnt")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 382.0
+offset_top = 222.0
+offset_right = 765.0
+offset_bottom = 377.0
+color = Color(1, 1, 1, 0)
+
+[node name="VictoryCard" type="Panel" parent="CanvasLayer" groups=["VictoryCard"]]
+visible = false
+offset_left = 382.0
+offset_top = 222.0
+offset_right = 765.0
+offset_bottom = 377.0
+
+[node name="Label" type="Label" parent="CanvasLayer/VictoryCard"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 383.0
+offset_bottom = 88.0
+text = "You Win!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ResetButton" type="Button" parent="CanvasLayer/VictoryCard"]
+offset_left = 142.0
+offset_top = 104.0
+offset_right = 238.0
+offset_bottom = 135.0
+tooltip_text = "Go to next level"
+theme_override_font_sizes/font_size = 13
+theme_override_styles/hover = SubResource("StyleBoxFlat_xm0ja")
+text = "Back to Level 1"
+
 [connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_ObjectiveArea_body_entered"]
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_DeathArea_body_entered"]
+[connection signal="pressed" from="CanvasLayer/VictoryCard/ResetButton" to="ObjectiveArea" method="_on_reset_button_pressed"]
