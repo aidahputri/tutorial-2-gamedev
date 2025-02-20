@@ -1,3 +1,11 @@
+# Detail Polishing
+
+1. Implementasi reset kondisi level ketika pesawatnya jatuh ke luar area permainan.
+2. Implementasi transisi level awal ke level baru ketika pemain berhasil mencapai ObjectiveArea. Misalnya menampilkan pesan kemenangan sesaat sebelum pindah level.
+
+
+# Jawaban Pertanyaan
+
 ## **1. Apa saja pesan log yang dicetak pada panel Output?**  
 - Pesan log **"Reached objective!"** dicetak ketika objek pesawat hampir menyentuh batas atas area permainan/window.  
 

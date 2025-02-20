@@ -71,6 +71,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="ResetButton" type="Button" parent="CanvasLayer/VictoryCard"]
+layout_mode = 0
 offset_left = 142.0
 offset_top = 104.0
 offset_right = 238.0
